@@ -1,79 +1,84 @@
-#include <stdio.h>
+//insert
+//delete
+//rear
+//front
+//display
 
+
+#include<stdio.h>
 #define max 5
-
-int a[max], top = -1;
-
-void push()
+int front = -1,rear = -1, a[max], i = 0,b;
+void enqueue()
 {
     int val;
 
-    if (top == max - 1)
+    if (rear == max - 1)
     {
-        printf("Stack is full\n");
+        printf("queue is overflow\n");
     }
     else
     {
         printf("Enter the value to be inserted: ");
         scanf("%d", &val);
-        a[++top] = val;
+        a[++front] = val;
         printf("Element inserted successfully\n");
     }
+    ++rear;
 }
-
-void pop()
+void dequeue()
 {
-    if (top == -1)
+        if (rear == -1)
     {
-        printf("Stack is empty\n");
+        printf("queue is underflow\n");
     }
     else
     {
-        printf("Deleted element is: %d\n", a[top]);
-        top--;
+        printf("Deleted element is: %d\n", a[front = i]);
+        i ++;
+        front++;
+        b = front;
     }
 }
-
 void peek()
 {
-    if (top == -1)
+    if(front == -1)
     {
-        printf("Stack is empty\n");
+        printf("The queue is empty\n");
     }
     else
     {
-        printf("Top element is: %d\n", a[top]);
+       printf("The peek element is %d\n", a[front = b]);
     }
 }
-
 void display()
 {
-    int i;
-
-    if (top == -1)
+    if(front == -1)
     {
-        printf("Stack is empty\n");
+        printf("The queue is empty");
+    }
+    else if(front == max)
+    {
+        printf("No elements\n");
     }
     else
     {
-        printf("The stack elements are: ");
-        for (i = 0; i <= top; i++)
+        printf("The queue elements are:\n");
+        for(front=b;front<rear;front++)
         {
-            printf("%d ", a[i]);
+            printf("%d\t",a[front]);
         }
-        printf("\n");
     }
-}
 
+}
 int main(void)
 {
     int choice;
 
     do
     {
-        printf("\n--- STACK OPERATIONS ---\n");
-        printf("1. INSERTION (PUSH)\n");
-        printf("2. DELETION (POP)\n");
+        printf("\n--- queue OPERATIONS ---\n");
+        printf("1. INSERTION \n");
+        printf("2. DELETION \n");
         printf("3. PEEK\n");
         printf("4. DISPLAY\n");
         printf("5. EXIT\n");
@@ -88,11 +93,11 @@ int main(void)
         switch (choice)
         {
             case 1:
-                push();
+                enqueue();
                 break;
 
             case 2:
-                pop();
+                dequeue();
                 break;
 
             case 3:
