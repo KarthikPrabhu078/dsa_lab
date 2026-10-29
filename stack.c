@@ -1,23 +1,25 @@
-#include<stdio.h>
-void push(int val);
-void main()
+Pgm: Write a C program to solve the Tower of Hanoi problem using recursion.
+/* Tower of Hanoi using recursion */
+#include <stdio.h>
+int count = 0; /* total number of moves */
+/* Move n disks from source to dest using temp */
+void tower(int n, char source, char temp, char dest)
 {
-    int i, a[10],n, val,top,max=5;
-    printf("Enter the number of elements need to be enter: ");
-    scanf("%d",&n);
-    printf("Enter the elements: ");
-    for(int i=0;i<n;i++)
-    {
-        int top=-1;
-        int a[top]=val;
-        top++;
-        if(top==max)
-        {
-            top=top-1;
-        }
-    }
+if (n == 0) /* base case: nothing to move */
+return;
+tower(n - 1, source, dest, temp); /* n-1 disks to temp */
+count++;
+printf("Move %2d: disk %d from %c to %c\n",
+count, n, source, dest);
+tower(n - 1, temp, source, dest); /* n-1 disks to dest */
 }
-int pop();
+int main(void)
 {
-    printf("Enter the poped ")
+int n;
+printf("Enter the number of disks: ");
+scanf("%d", &n);
+printf("Sequence of moves (A to C using B):\n");
+tower(n, 'A', 'B', 'C');
+printf("Total number of moves = %d\n", count);
+return 0;
 }
